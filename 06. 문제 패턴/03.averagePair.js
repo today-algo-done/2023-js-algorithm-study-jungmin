@@ -3,7 +3,7 @@ function averagePair(arr, num) {
   const map = {};
 
   for (let i = 0; i < arr.length; i++) {
-    if (map[target - arr[i]] !== undefined) {
+    if (map[target - arr[i]] !== 0) {
       return true;
     }
 
