@@ -15,7 +15,7 @@ class DoublyLinkedList {
 
   push(value) {
     const newNode = new Node(value);
-    if (!this.head) {
+    if (this.head === null) {
       this.head = newNode;
       this.tail = newNode;
     } else {
@@ -29,7 +29,7 @@ class DoublyLinkedList {
   }
 
   pop() {
-    if (!this.head) return undefined;
+    if (this.head === null) return undefined;
     const poppedNode = this.tail;
 
     if (this.length === 1) {
@@ -46,7 +46,7 @@ class DoublyLinkedList {
   }
 
   shift() {
-    if (!this.head) return undefined;
+    if (this.length === 0) return undefined;
     const shiftedNode = this.head;
 
     if (this.length === 1) {
@@ -65,7 +65,7 @@ class DoublyLinkedList {
   unshift(value) {
     const newNode = new Node(value);
 
-    if (!this.head) {
+    if (this.length === 0) {
       this.head = newNode;
       this.tail = newNode;
     } else {
@@ -79,38 +79,39 @@ class DoublyLinkedList {
   }
 
   get(index) {
-    if (index < 0 || this.length <= index) return null;
+    if (index < 0 || index >= this.length) return null;
     let current;
     let count;
 
-    if (this.length / 2 >= index) {
+    if (index <= this.length / 2) {
       current = this.head;
       count = 0;
-      while (index !== count) {
+      while (current) {
+        if (index === count) return current;
         current = current.next;
         count++;
       }
     } else {
       current = this.tail;
       count = this.length - 1;
-      while (index !== count) {
+      while (current) {
+        if (index === count) return current;
         current = current.prev;
         count--;
       }
     }
-    return current;
   }
 
   set(index, value) {
-    if (!this.get(index)) return false;
+    const foundNode = this.get(index);
+    if (foundNode === null) return false;
 
-    const current = this.get(index);
-    current.val = value;
+    foundNode.val = value;
     return true;
   }
 
   insert(index, value) {
-    if (index < 0 || this.length < index) return false;
+    if (index < 0 || index > this.length) return false;
     if (index === 0) return !!this.unshift(value);
     if (index === this.length) return !!this.push(value);
 
@@ -128,16 +129,20 @@ class DoublyLinkedList {
   }
 
   remove(index) {
-    if (index < 0 || this.length < index) return false;
-    if (index === 0) return !!this.shift();
-    if (index === this.length) return !!this.pop();
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
 
-    const beforeNode = this.get(index - 1);
-    const afterNode = beforeNode.next.next;
+    const removedNode = this.get(index);
+    const beforeNode = removedNode.prev;
+    const afterNode = removedNode.next;
     beforeNode.next = afterNode;
     afterNode.prev = beforeNode;
+
+    removedNode.next = null;
+    removedNode.prev = null;
     this.length--;
-    return true;
+    return removedNode;
   }
 }
 
