@@ -14,8 +14,7 @@ class Stack {
 
   push(value) {
     const newNode = new Node(value);
-
-    if (this.first === null) {
+    if (!this.first) {
       this.first = newNode;
       this.last = newNode;
     } else {
@@ -23,17 +22,15 @@ class Stack {
       this.first = newNode;
       this.first.next = temp;
     }
-
-    this.size++;
-    return this;
+    return ++this.size;
   }
 
   pop() {
-    if (this.first === null) return null;
+    if (!this.first) return null;
 
     const temp = this.first;
     if (this.first === this.last) {
-      this.first = null;
+      this.last = null;
     }
     this.first = this.first.next;
     this.size--;
@@ -42,6 +39,6 @@ class Stack {
 }
 
 const stack = new Stack();
-stack.push("1");
-stack.push("2");
-stack.push("3");
+stack.push("👵");
+stack.push("👨‍🦱");
+stack.push("👨");
