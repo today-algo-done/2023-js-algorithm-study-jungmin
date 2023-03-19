@@ -3,14 +3,12 @@
  * @return {boolean}
  */
 const isPalindrome = function (x) {
-  const arr = [...String(x)];
-  let result = "";
-  let current = arr.length;
+  if (x < 0) return false;
 
-  while (current > 0) {
-    current--;
-    result += arr[current];
+  const array = [...String(x)];
+  for (let i = 0; i < array.length / 2; i++) {
+    if (array[i] !== array[array.length - 1 - i]) return false;
   }
 
-  return result === String(x);
+  return true;
 };
