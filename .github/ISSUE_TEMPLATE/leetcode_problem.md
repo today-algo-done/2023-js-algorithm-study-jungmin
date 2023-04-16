@@ -2,7 +2,7 @@
 name: Leetcode problem 💡
 about: Add Leetcode problem issue
 labels:
-Title: [Leetcode] Num. title
+itle: [Leetcode] Num. title
 ---
 
 description
