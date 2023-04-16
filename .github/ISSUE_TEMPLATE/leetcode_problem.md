@@ -3,6 +3,7 @@ name: Leetcode problem 💡
 about: Add Leetcode problem issue
 labels:
 title: "[Leetcode] Num. title "
+assignees: "deipanema"
 ---
 
 description
