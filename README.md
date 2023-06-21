@@ -1,6 +1,6 @@
 
 
-[JavaScript 알고리즘 & 자료구조 마스터클래스](https://www.udemy.com/course/best-javascript-data-structures/) 강의 스터디를 공부하며 정리한 GitHub 레포지토리
+[JavaScript 알고리즘 & 자료구조 마스터클래스](https://www.udemy.com/course/best-javascript-data-structures/) 스터디하며 정리한 GitHub 레포지토리
 
 # JavaScript 알고리즘 & 자료구조 마스터클래스
 
